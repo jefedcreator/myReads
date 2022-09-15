@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const CurrentBooks = ({title,authors,imageLinks,shelf,handleSelect,id}) => {
-    console.log(shelf);
 
   return (
         <li>
@@ -30,6 +30,15 @@ const CurrentBooks = ({title,authors,imageLinks,shelf,handleSelect,id}) => {
             </div>
         </li>
   )
+}
+
+CurrentBooks.propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.array.isRequired,
+    imageLinks: PropTypes.object,
+    shelf: PropTypes.string.isRequired,
+    handleSelect: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired
 }
 
 export default CurrentBooks

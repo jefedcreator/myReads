@@ -1,5 +1,6 @@
 import React from 'react'
 import CurrentBooks from './currentBooks'
+import PropTypes from 'prop-types'
 
 const Home = ({books,handleSelect}) => {
   return (
@@ -62,6 +63,11 @@ const Home = ({books,handleSelect}) => {
           </div>
     </div>
   )
+}
+
+Home.propTypes = {
+    books: PropTypes.array.isRequired,
+    handleSelect: PropTypes.func.isRequired
 }
 
 export default Home

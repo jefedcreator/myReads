@@ -1,8 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import NewBooks from './NewBooks'
+import PropTypes from 'prop-types'
 
-const Search = ({search, handleAdd, handleSearch}) => {
+const Search = ({search, handleAdd, handleSearch,books,handleSelect}) => {
+
+
   return (
         <div className="search-books">
           <div className="search-books-bar">
@@ -22,17 +25,28 @@ const Search = ({search, handleAdd, handleSearch}) => {
                 search !== undefined && search.length > 0
                 ?
                 search.map(book => <NewBooks
-                  {...book}
-                  key={book.id}
-                  handleAdd={handleAdd} 
-              />)
-              :
-              <p>No result for search query</p>
-              }
+                    {...book}
+                    key={book.id}
+                    books={books}
+                    handleAdd={handleAdd} 
+                    handleSearch={handleSearch}
+                    handleSelect={handleSelect}
+                />)
+                :
+                <p>No result for search query</p>
+            }
+
             </ol>
           </div>
         </div>
   )
+}
+
+Search.propTypes = {
+    handleAdd: PropTypes.func.isRequired,
+    handleSearch: PropTypes.func.isRequired,
+    search: PropTypes.array.isRequired,
+    books: PropTypes.array.isRequired
 }
 
 export default Search

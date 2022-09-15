@@ -4,6 +4,7 @@ import * as BooksAPI from './BooksAPI'
 import {Link, Route, Routes} from 'react-router-dom'
 import Home from "./Home";
 import Search from "./Search";
+import Error from "./error";
 
 function App() {
   const[search, setSearch] = useState([])
@@ -26,17 +27,16 @@ function App() {
   const handleAdd = async(shelf, id) =>{
     const newBooks = search.filter(book => book.id === id).map(book => ({...book, "shelf":shelf}))
     const res = await BooksAPI.update(id,shelf)
-    console.log("update:",res);
     setBooks(books.concat(newBooks))
     const another = search.filter(book => book.id !== id)
     setSearch(another)
   }
 
-  console.log("books with value",books);
+
 
   const handleSearch = async (event) =>{
-    const res = await BooksAPI.search(event.target.value,10);
-    console.log("search:",res);
+    const value = event.target.value
+    const res = await BooksAPI.search(value,10);
     setSearch(res);
   }
 
@@ -64,7 +64,12 @@ function App() {
             search={search}
             handleSearch={handleSearch}
             handleAdd={handleAdd}
+            books={books}
+            handleSelect={handleSelect}
             />
+          }/>
+          <Route path='*' element={
+            <Error/>
           }/>
         </Routes>
         <div className="open-search">

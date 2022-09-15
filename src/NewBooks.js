@@ -1,6 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import CurrentBooks from './currentBooks'
 
-const NewBooks = ({title,authors,imageLinks,type,handleAdd,id}) => {
+
+const NewBooks = ({title,authors,imageLinks,handleAdd,id, books,handleSelect}) => {
+
+    for (let book of books) {
+        if (book.id == id) {
+            return <CurrentBooks
+            {...book}
+            key={book.id}
+            handleSelect={handleSelect}
+            />
+        }
+    }
+
   return (
     <li>
     <div className="book">
@@ -28,6 +42,14 @@ const NewBooks = ({title,authors,imageLinks,type,handleAdd,id}) => {
     </div>
 </li>
   )
+}
+
+NewBooks.propTypes = {
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.string.isRequired,
+    imageLinks: PropTypes.string.isRequired,
+    handleAdd: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired
 }
 
 export default NewBooks
