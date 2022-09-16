@@ -29,11 +29,11 @@ const NewBooks = ({title,authors,imageLinks,handleAdd,id, books,handleSelect,she
         ></div>
         <div className="book-shelf-changer">
         <select value={shelf} onChange={(e) => handleAdd(e.target.value,id)}>
-            <option disabled>Add to...</option>
-            <option value={shelf}>Currently Reading</option>
-            <option value={shelf}>Want to Read</option>
-            <option value={shelf}>Read</option>
-            <option value={shelf} selected={true}>None</option>
+        <option disabled>Add to...</option>
+            <option value="currentlyReading">Currently Reading</option>
+            <option value="wantToRead">Want to Read</option>
+            <option value="read">Read</option>
+            <option value="None">None</option>
         </select>
         </div>
     </div>
@@ -46,7 +46,7 @@ const NewBooks = ({title,authors,imageLinks,handleAdd,id, books,handleSelect,she
 
 NewBooks.propTypes = {
     title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
+    authors: PropTypes.array,
     imageLinks: PropTypes.object,
     handleAdd: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired

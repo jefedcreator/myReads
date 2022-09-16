@@ -31,6 +31,7 @@ const Search = ({search, handleAdd, handleSearch,books,handleSelect}) => {
                     handleAdd={handleAdd} 
                     handleSearch={handleSearch}
                     handleSelect={handleSelect}
+                    shelf="None"
                 />)
                 :
                 <p>No result for search query</p>
