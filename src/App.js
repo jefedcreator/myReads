@@ -40,6 +40,8 @@ function App() {
     setSearch(res);
   }
 
+  console.log("search:",search);
+
   useEffect(()=>{
     let unMount = false;
     if(!unMount){

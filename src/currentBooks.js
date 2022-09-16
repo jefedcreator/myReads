@@ -16,12 +16,12 @@ const CurrentBooks = ({title,authors,imageLinks,shelf,handleSelect,id}) => {
                 }}
                 ></div>
                 <div className="book-shelf-changer">
-                <select onChange={(e) => handleSelect(e.target.value,id)}>
-                    <option value="none" disabled>Move to...</option>
-                    <option value="currentlyReading" selected = {shelf === "currentlyReading"}>Currently Reading</option>
-                    <option value="wantToRead" selected = {shelf === "wantToRead"}>Want to Read</option>
-                    <option value="read" selected = {shelf === "read"}>Read</option>
-                    <option value="none">None</option>
+                <select value={shelf} onChange={(e) => handleSelect(e.target.value,id)}>
+                    <option disabled>Move to...</option>
+                    <option value="currentlyReading">Currently Reading</option>
+                    <option value="wantToRead">Want to Read</option>
+                    <option value="read">Read</option>
+                    <option>None</option>
                 </select>
                 </div>
             </div>
